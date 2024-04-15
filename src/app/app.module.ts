@@ -11,6 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { PaginaNoEncontradaComponent } from './views/pagina-no-encontrada/pagina-no-encontrada.component';
 import { AcercaDeNosotrosComponent } from './views/acerca-de-nosotros/acerca-de-nosotros.component';
 import { LoginComponent } from './views/login/login.component';
+import { EspejoPipe } from './shares/pipes/espejo.pipe';
+import { FrontComponent } from './views/front/front.component';
 
 @NgModule({
   declarations: [
@@ -20,15 +22,12 @@ import { LoginComponent } from './views/login/login.component';
     EntradaComponent,
     PaginaNoEncontradaComponent,
     AcercaDeNosotrosComponent,
-    LoginComponent
+    LoginComponent,
+    EspejoPipe,
+    FrontComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

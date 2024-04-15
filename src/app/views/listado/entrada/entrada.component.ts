@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-
 import { Entrada } from 'src/app/shared/interfaces/entrada';
 
 @Component({
@@ -16,10 +15,12 @@ export class EntradaComponent implements OnInit {
 
   constructor() {
     this.entrada = {
-      title: '',
-      body: '',
-      id: 1,
-      userId: 1,
+      userId: 0,
+      id: 0,
+      title: 'string',
+      author: 'string',
+      date: new Date(Date.now()),
+      body: 'string',
     };
   }
 
@@ -27,5 +28,9 @@ export class EntradaComponent implements OnInit {
 
   public enviarTitulo() {
     this.doEvent.emit(this.entrada.title);
+  }
+
+  public tipoDeClase(): string {
+    return this.entrada.id % 2 == 0 ? 'claro' : 'oscuro';
   }
 }

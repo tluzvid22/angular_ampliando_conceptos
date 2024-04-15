@@ -1,4 +1,4 @@
-<div id="entrada" (click)="enviarTitulo()">
-  <h4>{{ entrada.title }}</h4>
+<div id="entrada" (click)="enviarTitulo()" [ngClass]="tipoDeClase()">
+  <h4>{{ entrada.title | uppercase | espejo }}</h4>
   <p>{{ entrada.body }}</p>
 </div>

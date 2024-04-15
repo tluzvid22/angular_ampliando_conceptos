@@ -4,5 +4,6 @@
     *ngFor="let entrada of listadoEntradas"
     [entrada]="entrada"
     (doEvent)="mostrarTitulo($event)"
+    routerLink="/front/detalle-entrada/{{ entrada.id }}"
   ></app-entrada>
 </div>
