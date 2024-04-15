@@ -8,4 +8,12 @@
   <li id="acceso" *ngIf="miToken != 0" class="acceso" (click)="logout()">
     <span><strong>Usuario:</strong> {{ nombreUsuario }}</span>
   </li>
+  <li
+    id="dashboard"
+    *ngIf="miToken != 0"
+    class="acceso"
+    routerLink="/dashboard"
+  >
+    <span><strong>Dashboard</strong></span>
+  </li>
 </ul>

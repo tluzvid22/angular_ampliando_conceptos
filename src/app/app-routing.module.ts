@@ -7,6 +7,8 @@ import { PaginaNoEncontradaComponent } from './views/pagina-no-encontrada/pagina
 import { LoginComponent } from './views/login/login.component';
 import { FrontComponent } from './views/front/front.component';
 import { DetallesEntradaComponent } from './views/detalles-entrada/detalles-entrada.component';
+import { DashboardComponent } from './views/dashboard/dashboard.component';
+import { authGuard } from './auth.guard';
 
 const routes: Routes = [
   {
@@ -19,7 +21,11 @@ const routes: Routes = [
       { path: 'detalle-entrada/:id', component: DetallesEntradaComponent },
     ],
   },
-
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [authGuard],
+  },
   { path: '', redirectTo: 'front/listado', pathMatch: 'full' },
   { path: '**', component: PaginaNoEncontradaComponent },
 ];
