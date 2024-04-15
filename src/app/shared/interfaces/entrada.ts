@@ -3,6 +3,4 @@ export interface Entrada {
   id: number;
   title: string;
   body: string;
-  autor: string;
-  fecha: string;
 }

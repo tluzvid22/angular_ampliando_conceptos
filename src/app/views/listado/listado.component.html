@@ -1,4 +1,8 @@
 <div id="contenedor">
   <h3>Listado de entradas al blog:</h3>
-  <app-entrada *ngFor="let entrada of listadoEntradas" [entrada]="entrada" (onDoEvent)="mostrarTitulo($event)"></app-entrada>
+  <app-entrada
+    *ngFor="let entrada of listadoEntradas"
+    [entrada]="entrada"
+    (doEvent)="mostrarTitulo($event)"
+  ></app-entrada>
 </div>

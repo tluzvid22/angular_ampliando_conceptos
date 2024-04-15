@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
-import { Entrada } from '../../shared/interfaces/entrada';
-import { EntradaService } from '../../shared/services/entrada.service';
+import { Entrada } from 'src/app/shared/interfaces/entrada';
+import { EntradaService } from 'src/app/shared/services/entrada.service';
 
 @Component({
   selector: 'app-listado',
@@ -13,7 +12,7 @@ export class ListadoComponent implements OnInit {
   // Atibutos
   public listadoEntradas: Entrada[];
 
-  constructor(private entradaService: EntradaService, private router: Router) {
+  constructor(private entradaService: EntradaService) {
     this.listadoEntradas = [];
   }
 
@@ -24,7 +23,7 @@ export class ListadoComponent implements OnInit {
   private listarEntradas(): void {
     this.entradaService.recuperarEntradas().subscribe(
       (entradas: Entrada[]) => {
-        this.listadoEntradas = [...entradas];
+        this.listadoEntradas = entradas;
       },
       (error: Error) => {
         console.log('Error: ', error);
@@ -35,7 +34,7 @@ export class ListadoComponent implements OnInit {
     );
   }
 
-  public mostrarTitulo(id: number): void {
-    this.router.navigate([`front/detalle-entrada/${id}`]);
+  public mostrarTitulo(title: string): void {
+    alert(`Entrada seleccionada: ${title}.`);
   }
 }

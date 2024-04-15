@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 
 import { Usuario } from 'src/app/shared/classes/usuario';
 import { LoginService } from 'src/app/shared/services/login.service';
-import { TokenService } from 'src/app/shared/services/token.service';
 
 @Component({
   selector: 'app-login',
@@ -16,8 +15,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private loginService: LoginService,
-    private router: Router,
-    private tokenService: TokenService) {
+    private router: Router) {
     this.usuario = new Usuario();
   }
 
@@ -28,11 +26,10 @@ export class LoginComponent implements OnInit {
 
     this.loginService.login(this.usuario).subscribe(
       (data: number) => {
-        this.tokenService.setToken(data);
+        localStorage.setItem('nombreUsuario', this.usuario.nombre);
+        localStorage.setItem('miTokenPersonal',`${ data }`);
 
-        this.tokenService.setNombreUsuario(this.usuario.nombre);
-
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/listado']);
       },
       (error: Error) => {
         console.error("Error al realizar el acceso");
