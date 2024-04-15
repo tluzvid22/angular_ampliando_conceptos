@@ -1,36 +1,30 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenService } from '../shared/services/token.service';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  styleUrls: ['./menu.component.css'],
 })
 export class MenuComponent implements OnInit {
-
   public miToken: number;
   public nombreUsuario: string | null;
 
-  constructor() {
+  constructor(private tokenService: TokenService) {
     this.miToken = 0;
-    this.nombreUsuario = "";
+    this.nombreUsuario = '';
   }
 
   ngOnInit(): void {
-
-    if (localStorage.getItem('miTokenPersonal')) {
-      this.miToken = +localStorage.getItem('miTokenPersonal')!;
-    }
-
-    if (localStorage.getItem('miTokenPersonal')) {
-      this.nombreUsuario = localStorage.getItem('nombreUsuario');
-    }
-
+    this.tokenService.token$.subscribe((token: number) => {
+      this.miToken = token;
+    });
+    this.tokenService.username$.subscribe((username: string) => {
+      this.nombreUsuario = username;
+    });
   }
 
   public logout(): void {
-    if (localStorage.getItem('miTokenPersonal')) {
-      localStorage.removeItem('miTokenPersonal');
-    }
+    this.tokenService.setToken(0);
   }
-
 }
